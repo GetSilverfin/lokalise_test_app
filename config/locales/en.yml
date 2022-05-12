@@ -1,33 +1,32 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
+# Please see the separate translations file for custom plurals
+# in `config/locales/custom_plurals.en.yml`
 en:
-  hello: "Hello world"
+  # Simplest case
+  simple_plural_working_as_expected:
+    one: 1 thing -- working as expected
+    other: Some things -- working as expected
+  # The `zero` is completely ignored when uploading the file.
+  # We can manually add the key `this_one_ignores_zero.zero` but
+  # lokalise will keep ingoring any change or new translations
+  # for this key on all file uploads
+  this_one_ignores_zero:
+    one: 1 thing -- ignoring zero
+    other: Some things -- ignoring zero
+    zero: Why do you ignore me?
+  # It's not recognized as plural and has a useless extra key
+  forcing_zero_same_file:
+    one: 1 thing -- forcing zero
+    other: Some things -- forcing zero
+    zero: Don't ignore me!!
+    force_zero: true
+  # It is detected as plural, but the zero, defined in a separate file,
+  # is completely ignored
+  this_one_ignores_zero_on_separate_file:
+    one: 1 thing -- ignoring zero on separate file
+    other: Some things -- ignoring zero on separate file
+  # It is detected as plural, and the zero, defined in a separate file,
+  # is imported as a separate key when uploading the file.
+  # It is for now the best workaround we found, but has a useless extra key
+  forcing_zero_separate_file:
+    one: 1 thing -- forcing zero on a separate file
+    other: Some things -- forcing zero on a separate file

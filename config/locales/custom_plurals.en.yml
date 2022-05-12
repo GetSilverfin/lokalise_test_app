@@ -1,0 +1,6 @@
+en:
+  forcing_zero_separate_file:
+    zero: Don't ignore me -- forcing zero on a separate file
+    force_zero: true
+  this_one_ignores_zero_on_separate_file:
+    zero: You are ignoring mee too!! -- ignoring zero on a separte file
